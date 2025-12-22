@@ -15,7 +15,8 @@ import {
   Cpu,
   List,
   Quote,
-  Menu
+  Menu,
+  Image
 } from 'lucide-react';
 import { AdminDashboard } from '@/components/admin/AdminDashboard';
 import { AdminServices } from '@/components/admin/AdminServices';
@@ -26,8 +27,9 @@ import { AdminTechStack } from '@/components/admin/AdminTechStack';
 import { AdminBlog } from '@/components/admin/AdminBlog';
 import { AdminContact } from '@/components/admin/AdminContact';
 import { AdminSettings } from '@/components/admin/AdminSettings';
+import { AdminMedia } from '@/components/admin/AdminMedia';
 
-type Section = 'dashboard' | 'services' | 'case-studies' | 'testimonials' | 'process' | 'tech' | 'blog' | 'contact' | 'settings';
+type Section = 'dashboard' | 'services' | 'case-studies' | 'testimonials' | 'process' | 'tech' | 'blog' | 'contact' | 'media' | 'settings';
 
 export default function Admin() {
   const { user, isAdmin, loading, signOut } = useAuth();
@@ -53,6 +55,7 @@ export default function Admin() {
 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { id: 'media', label: 'Media Library', icon: Image },
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'case-studies', label: 'Case Studies', icon: Users },
     { id: 'testimonials', label: 'Testimonials', icon: Quote },
@@ -77,6 +80,8 @@ export default function Admin() {
     switch (activeSection) {
       case 'dashboard':
         return <AdminDashboard />;
+      case 'media':
+        return <AdminMedia />;
       case 'services':
         return <AdminServices />;
       case 'case-studies':
