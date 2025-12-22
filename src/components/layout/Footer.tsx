@@ -13,15 +13,15 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="section-padding bg-primary text-primary-foreground">
+    <footer className="px-4 sm:px-6 md:px-12 lg:px-24 py-12 sm:py-16 md:py-20 bg-primary text-primary-foreground">
       <div className="container-narrow">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16">
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <a href="#" className="font-display text-2xl font-bold">
+          <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
+            <a href="#" className="font-display text-xl sm:text-2xl font-bold">
               Catalyst<span className="text-accent">AI</span>
             </a>
-            <p className="text-primary-foreground/70 mt-4 max-w-sm">
+            <p className="text-primary-foreground/70 mt-3 sm:mt-4 max-w-sm text-sm sm:text-base">
               Building intelligent growth engines for modern businesses. AI-powered systems that scale.
             </p>
           </div>
@@ -29,13 +29,13 @@ export const Footer = () => {
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-semibold mb-4">{category}</h4>
-              <ul className="space-y-3">
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{category}</h4>
+              <ul className="space-y-2 sm:space-y-3">
                 {links.map((link) => (
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                      className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-xs sm:text-sm"
                     >
                       {link}
                     </a>
@@ -47,16 +47,16 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-primary-foreground/10">
-          <p className="text-primary-foreground/50 text-sm">
+        <div className="flex flex-col sm:flex-row items-center justify-between pt-6 sm:pt-8 border-t border-primary-foreground/10 gap-4">
+          <p className="text-primary-foreground/50 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} Catalyst AI. All rights reserved.
           </p>
           <button
             onClick={scrollToTop}
-            className="mt-4 md:mt-0 p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
+            className="p-2.5 sm:p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
             aria-label="Back to top"
           >
-            <ArrowUp className="w-5 h-5" />
+            <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
       </div>

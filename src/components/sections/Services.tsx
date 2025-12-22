@@ -48,20 +48,20 @@ export const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="group p-8 rounded-2xl bg-background border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-lg"
+              className="group p-6 sm:p-8 rounded-2xl bg-background border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-lg"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                <service.icon className="w-7 h-7 text-accent" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-accent/20 transition-colors">
+                <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
               </div>
-              <h3 className="font-display text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+              <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{service.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{service.description}</p>
             </motion.div>
           ))}
         </div>
