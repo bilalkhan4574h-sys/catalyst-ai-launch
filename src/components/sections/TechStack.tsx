@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
-const technologies = [
+const fallbackTechnologies = [
   { name: "Python", category: "Core" },
   { name: "TensorFlow", category: "ML" },
   { name: "PyTorch", category: "ML" },
   { name: "OpenAI API", category: "AI" },
   { name: "LangChain", category: "AI" },
+  { name: "n8n", category: "Automation" },
   { name: "Salesforce", category: "CRM" },
   { name: "HubSpot", category: "CRM" },
   { name: "Zapier", category: "Automation" },
@@ -20,6 +23,23 @@ const technologies = [
 export const TechStack = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const { data: techStack } = useQuery({
+    queryKey: ['tech-stack'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('tech_stack')
+        .select('*')
+        .eq('is_active', true)
+        .order('sort_order');
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const technologies = techStack && techStack.length > 0 
+    ? techStack.map(t => ({ name: t.name, category: t.category }))
+    : fallbackTechnologies;
 
   return (
     <section id="tech" className="section-padding bg-card" ref={ref}>

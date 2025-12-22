@@ -6,11 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -18,8 +20,29 @@ export const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    const { error } = await supabase
+      .from('contact_submissions')
+      .insert({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      });
+    
+    setIsSubmitting(false);
+    
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     toast({
       title: "Message sent!",
       description: "We'll get back to you within 24 hours.",
@@ -107,9 +130,9 @@ export const Contact = () => {
                   className="bg-background resize-none"
                 />
               </div>
-              <Button type="submit" variant="glow" size="lg" className="w-full">
-                Book a Strategy Call
-                <ArrowRight className="w-4 h-4" />
+              <Button type="submit" variant="glow" size="lg" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Book a Strategy Call"}
+                {!isSubmitting && <ArrowRight className="w-4 h-4" />}
               </Button>
             </form>
           </motion.div>
