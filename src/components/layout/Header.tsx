@@ -32,8 +32,8 @@ export const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container-narrow px-6 md:px-12 lg:px-24">
-        <div className="flex items-center justify-between h-20">
+      <div className="container-narrow px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a href="#" className="font-display text-xl font-bold">
             Catalyst<span className="text-accent">AI</span>
@@ -72,23 +72,23 @@ export const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.nav
-            className="md:hidden py-6 border-t border-border"
+            className="md:hidden py-4 sm:py-6 border-t border-border bg-background/95 backdrop-blur-xl"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-1"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <Button variant="glow" size="lg" className="mt-4" asChild>
+              <Button variant="glow" size="default" className="mt-3 sm:mt-4 w-full" asChild>
                 <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Get Started</a>
               </Button>
             </div>

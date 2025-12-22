@@ -48,7 +48,7 @@ export const Blog = () => {
           </a>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {posts.map((post, index) => (
             <motion.article
               key={index}
@@ -57,10 +57,10 @@ export const Blog = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-muted to-muted/50 mb-6 overflow-hidden">
+              <div className="aspect-[4/3] rounded-xl sm:rounded-2xl bg-gradient-to-br from-muted to-muted/50 mb-4 sm:mb-6 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-accent/10 to-transparent group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+              <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
                 <span className="text-accent font-medium">{post.category}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
@@ -68,10 +68,10 @@ export const Blog = () => {
                   {post.readTime}
                 </span>
               </div>
-              <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-accent transition-colors">
+              <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 sm:mb-3 group-hover:text-accent transition-colors">
                 {post.title}
               </h3>
-              <p className="text-muted-foreground">{post.excerpt}</p>
+              <p className="text-muted-foreground text-sm sm:text-base">{post.excerpt}</p>
             </motion.article>
           ))}
         </div>

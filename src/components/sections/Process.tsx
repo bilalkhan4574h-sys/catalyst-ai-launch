@@ -54,30 +54,30 @@ export const Process = () => {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-primary-foreground/20 -translate-x-1/2" />
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-primary-foreground/20 -translate-x-1/2" />
 
-          <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-16 md:gap-y-12">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
             {phases.map((phase, index) => (
               <motion.div
                 key={index}
-                className={`relative ${index % 2 === 1 ? 'md:translate-y-24' : ''}`}
+                className={`relative ${index % 2 === 1 ? 'lg:translate-y-24' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
               >
                 {/* Timeline Dot */}
-                <div className="hidden md:block absolute top-8 w-4 h-4 rounded-full bg-accent glow-accent-sm" 
+                <div className="hidden lg:block absolute top-8 w-4 h-4 rounded-full bg-accent glow-accent-sm" 
                      style={{ [index % 2 === 0 ? 'right' : 'left']: '-2.5rem' }} />
                 
-                <div className="p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                      <phase.icon className="w-6 h-6 text-accent" />
+                <div className="p-5 sm:p-6 lg:p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-accent/20 flex items-center justify-center">
+                      <phase.icon className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                     </div>
-                    <span className="text-accent font-semibold">{phase.week}</span>
+                    <span className="text-accent font-semibold text-sm sm:text-base">{phase.week}</span>
                   </div>
-                  <h3 className="font-display text-xl font-semibold mb-3">{phase.title}</h3>
-                  <p className="text-primary-foreground/70 leading-relaxed">{phase.description}</p>
+                  <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{phase.title}</h3>
+                  <p className="text-primary-foreground/70 leading-relaxed text-sm sm:text-base">{phase.description}</p>
                 </div>
               </motion.div>
             ))}
