@@ -24,6 +24,7 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Save to database
     const { error } = await supabase
       .from('contact_submissions')
       .insert({
@@ -32,9 +33,8 @@ export const Contact = () => {
         message: formData.message,
       });
     
-    setIsSubmitting(false);
-    
     if (error) {
+      setIsSubmitting(false);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -42,7 +42,22 @@ export const Contact = () => {
       });
       return;
     }
+
+    // Send email notifications
+    try {
+      await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      });
+    } catch (emailError) {
+      console.error('Email notification failed:', emailError);
+      // Don't block form submission if email fails
+    }
     
+    setIsSubmitting(false);
     toast({
       title: "Message sent!",
       description: "We'll get back to you within 24 hours.",
