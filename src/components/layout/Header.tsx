@@ -36,10 +36,10 @@ export const Header = () => {
       <div className="container-narrow px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-0 font-display text-xl sm:text-2xl font-bold tracking-tight">
+          <a href="#" className="flex items-center font-display text-xl sm:text-2xl font-bold tracking-tight">
             <span className="text-foreground">Catalyst</span>
             <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent">AI</span>
-            <img src={catalystIcon} alt="" className="h-10 sm:h-12 w-auto" />
+            <img src={catalystIcon} alt="" className="h-12 sm:h-14 w-auto -ml-1" />
           </a>
 
           {/* Desktop Navigation */}
