@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-# Ensure the frontend build always uses the correct backend configuration on Netlify.
-# These are public (publishable) values used by the browser client.
-[build.environment]
-  VITE_SUPABASE_URL = "https://lzfoebaljritlaclceyx.supabase.co"
-  VITE_SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6Zm9lYmFsanJpdGxhY2xjZXl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYzOTk1NDEsImV4cCI6MjA4MTk3NTU0MX0.yz2v4Jqpk-EF8PTjSqYTMq4FPqUIafEv5YhBHeFg2Zc"
