@@ -36,10 +36,10 @@ export const Header = () => {
       <div className="container-narrow px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center font-display text-xl sm:text-2xl font-bold tracking-tight">
+          <a href="#" className="flex items-center gap-0 font-display text-xl sm:text-2xl font-bold tracking-tight">
             <span className="text-foreground">Catalyst</span>
             <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent">AI</span>
-            <img src={catalystIcon} alt="" className="h-12 sm:h-14 w-auto -ml-1" />
+            <img src={catalystIcon} alt="" className="h-12 sm:h-14 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
@@ -64,11 +64,7 @@ export const Header = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button
-              className="p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
+            <button className="p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -94,7 +90,9 @@ export const Header = () => {
                 </a>
               ))}
               <Button variant="glow" size="default" className="mt-3 sm:mt-4 w-full" asChild>
-                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Get Started</a>
+                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  Get Started
+                </a>
               </Button>
             </div>
           </motion.nav>
