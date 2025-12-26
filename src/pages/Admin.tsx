@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -130,11 +129,8 @@ export default function Admin() {
       </nav>
 
       <div className="p-4 border-t border-border space-y-3">
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground truncate flex-1">
-            {user.email}
-          </span>
-          <ThemeToggle variant="ghost" size="icon" />
+        <div className="text-sm text-muted-foreground truncate">
+          {user.email}
         </div>
         <Button
           variant="outline"
