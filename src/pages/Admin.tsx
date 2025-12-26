@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { setPageSeo } from '@/lib/seo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { 
@@ -36,6 +37,20 @@ export default function Admin() {
   const [activeSection, setActiveSection] = useState<Section>('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
+
+  useEffect(() => {
+    setPageSeo({
+      title: 'Admin Dashboard | Catalyst AI',
+      description: 'Catalyst AI admin dashboard to manage site content and settings.',
+      canonical: `${window.location.origin}/admin`,
+      robots: 'noindex,nofollow',
+    });
+  }, []);
+
   useEffect(() => {
     if (!loading && !user) {
       navigate('/auth');
@@ -52,6 +67,27 @@ export default function Admin() {
 
   if (!user) return null;
 
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <div className="w-full max-w-md bg-card border border-border rounded-2xl p-8 text-center space-y-4">
+          <h1 className="font-display text-2xl font-bold">Access denied</h1>
+          <p className="text-muted-foreground">
+            Your account doesn’t have admin access.
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <Button variant="outline" asChild>
+              <Link to="/">Go home</Link>
+            </Button>
+            <Button variant="glow" onClick={handleSignOut}>
+              Sign out
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'media', label: 'Media Library', icon: Image },
@@ -64,11 +100,6 @@ export default function Admin() {
     { id: 'contact', label: 'Contact Submissions', icon: MessageSquare },
     { id: 'settings', label: 'Site Settings', icon: Settings },
   ] as const;
-
-  const handleSignOut = async () => {
-    await signOut();
-    navigate('/');
-  };
 
   const handleSectionChange = (section: Section) => {
     setActiveSection(section);

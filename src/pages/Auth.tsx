@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Mail, Lock } from 'lucide-react';
 import { z } from 'zod';
+import { setPageSeo } from '@/lib/seo';
 
 const authSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -27,6 +28,17 @@ export default function Auth() {
       navigate('/admin');
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    setPageSeo({
+      title: isLogin ? 'Admin Login | Catalyst AI' : 'Create Account | Catalyst AI',
+      description: isLogin
+        ? 'Admin login to access the Catalyst AI admin panel.'
+        : 'Create an account to access the Catalyst AI admin panel.',
+      canonical: `${window.location.origin}/auth`,
+      robots: 'noindex,nofollow',
+    });
+  }, [isLogin]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,9 +61,12 @@ export default function Auth() {
         if (error) {
           toast({
             title: 'Login Failed',
-            description: error.message === 'Invalid login credentials' 
-              ? 'Invalid email or password. Please try again.' 
-              : error.message,
+            description:
+              error.message?.toLowerCase().includes('invalid api key')
+                ? 'Deployment misconfigured: invalid backend key. On Netlify, set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY, then redeploy.'
+                : error.message === 'Invalid login credentials'
+                  ? 'Invalid email or password. Please try again.'
+                  : error.message,
             variant: 'destructive',
           });
         } else {
