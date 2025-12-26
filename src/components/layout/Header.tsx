@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import catalystIcon from "@/assets/catalyst-icon.png";
 
 const navLinks = [
@@ -56,17 +55,15 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button + Theme Toggle */}
-          <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center">
             <Button variant="glow" size="default" asChild>
               <a href="#contact">Get Started</a>
             </Button>
           </div>
 
-          {/* Mobile: Theme Toggle + Menu Button */}
-          <div className="md:hidden flex items-center gap-1">
-            <ThemeToggle />
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
             <button
               className="p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
