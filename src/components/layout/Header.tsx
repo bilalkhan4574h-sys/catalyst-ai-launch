@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import CatalystIcon from "@/components/CatalystIcon";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -36,9 +37,10 @@ export const Header = () => {
       <div className="container-narrow px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-1 font-display text-xl sm:text-2xl font-bold tracking-tight">
+          <a href="#" className="flex items-center gap-0.5 font-display text-xl sm:text-2xl font-bold tracking-tight">
             <span className="text-foreground">Catalyst</span>
             <span className="bg-gradient-to-r from-[#0ea5e9] to-[#06b6d4] bg-clip-text text-transparent">AI</span>
+            <CatalystIcon className="h-8 sm:h-10 w-auto ml-1" />
           </a>
 
           {/* Desktop Navigation */}
