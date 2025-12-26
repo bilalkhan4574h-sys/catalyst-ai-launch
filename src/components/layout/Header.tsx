@@ -39,7 +39,7 @@ export const Header = () => {
           <a href="#" className="flex items-center font-display text-xl sm:text-2xl font-bold tracking-tight">
             <span className="text-foreground">Catalyst</span>
             <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent">AI</span>
-            <img src={catalystIcon} alt="" className="h-12 sm:h-16 w-auto -ml-1" />
+            <img src={catalystIcon} alt="" className="h-12 sm:h-20 w-auto -ml-1" />
           </a>
 
           {/* Desktop Navigation */}
