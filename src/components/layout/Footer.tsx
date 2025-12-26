@@ -1,4 +1,5 @@
 import { ArrowUp } from "lucide-react";
+import catalystIcon from "@/assets/catalyst-icon.png";
 
 const footerLinks = {
   Company: ["About", "Careers", "Contact"],
@@ -18,8 +19,10 @@ export const Footer = () => {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16">
           {/* Brand */}
           <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <a href="#" className="font-display text-xl sm:text-2xl font-bold">
-              Catalyst<span className="text-accent">AI</span>
+            <a href="#" className="flex items-center gap-0.5 font-display text-xl sm:text-2xl font-bold">
+              <span>Catalyst</span>
+              <span className="text-accent">AI</span>
+              <img src={catalystIcon} alt="" className="h-6 sm:h-8 w-auto ml-1 brightness-0 invert" />
             </a>
             <p className="text-primary-foreground/70 mt-3 sm:mt-4 max-w-sm text-sm sm:text-base">
               Building intelligent growth engines for modern businesses. AI-powered systems that scale.
