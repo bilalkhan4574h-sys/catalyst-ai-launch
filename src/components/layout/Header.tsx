@@ -39,7 +39,7 @@ export const Header = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-0.5 font-display text-xl sm:text-2xl font-bold tracking-tight">
             <span className="text-foreground">Catalyst</span>
-            <span className="bg-gradient-to-r from-[#0ea5e9] to-[#06b6d4] bg-clip-text text-transparent">AI</span>
+            <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent">AI</span>
             <img src={catalystIcon} alt="" className="h-8 sm:h-10 w-auto ml-1" />
           </a>
 
