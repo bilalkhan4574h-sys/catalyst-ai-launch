@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
-import { Plus, Pencil, Trash2, X } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, Upload, Loader2 } from 'lucide-react';
 
 interface TeamMember {
   id: string;
@@ -28,6 +28,8 @@ export function AdminTeam() {
   const queryClient = useQueryClient();
   const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
   const [isCreating, setIsCreating] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     role: '',
@@ -137,6 +139,50 @@ export function AdminTeam() {
     });
     setEditingMember(null);
     setIsCreating(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({ title: 'Please select an image file', variant: 'destructive' });
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({ title: 'Image must be less than 5MB', variant: 'destructive' });
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `team/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('media')
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('media')
+        .getPublicUrl(fileName);
+
+      setFormData({ ...formData, photo_url: publicUrl });
+      toast({ title: 'Photo uploaded successfully' });
+    } catch (error) {
+      console.error('Upload error:', error);
+      toast({ title: 'Failed to upload photo', variant: 'destructive' });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const startEditing = (member: TeamMember) => {
@@ -223,6 +269,59 @@ export function AdminTeam() {
                   rows={3}
                 />
               </div>
+              <div className="space-y-2">
+                <Label>Photo</Label>
+                <div className="flex items-start gap-4">
+                  {formData.photo_url && (
+                    <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-muted shrink-0">
+                      <img 
+                        src={formData.photo_url} 
+                        alt="Preview" 
+                        className="w-full h-full object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setFormData({ ...formData, photo_url: '' })}
+                        className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full p-0.5"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  )}
+                  <div className="flex-1 space-y-2">
+                    <div className="flex gap-2">
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handlePhotoUpload}
+                        className="hidden"
+                        id="photo-upload"
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => fileInputRef.current?.click()}
+                        disabled={isUploading}
+                      >
+                        {isUploading ? (
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        ) : (
+                          <Upload className="w-4 h-4 mr-2" />
+                        )}
+                        Upload Photo
+                      </Button>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Or enter URL manually:</p>
+                    <Input
+                      id="photo_url"
+                      value={formData.photo_url}
+                      onChange={(e) => setFormData({ ...formData, photo_url: e.target.value })}
+                      placeholder="https://..."
+                    />
+                  </div>
+                </div>
+              </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
@@ -231,15 +330,6 @@ export function AdminTeam() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="photo_url">Photo URL</Label>
-                  <Input
-                    id="photo_url"
-                    value={formData.photo_url}
-                    onChange={(e) => setFormData({ ...formData, photo_url: e.target.value })}
-                    placeholder="https://..."
                   />
                 </div>
               </div>
