@@ -66,7 +66,7 @@ export const Header = () => {
           <Link to="/" className="flex items-center font-display text-xl sm:text-2xl font-bold tracking-tight">
             <span className="text-foreground">Catalyst</span>
             <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent">AI</span>
-            <img src={catalystIcon} alt="" className="h-8 sm:h-20 w-auto -ml-1" />
+            <img src={catalystIcon} alt="" className="h-10 sm:h-12 w-auto -ml-2" />
           </Link>
 
           {/* Desktop Navigation */}
