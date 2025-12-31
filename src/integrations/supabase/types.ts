@@ -116,6 +116,48 @@ export type Database = {
         }
         Relationships: []
       }
+      careers: {
+        Row: {
+          created_at: string
+          department: string
+          description: string
+          id: string
+          is_active: boolean | null
+          location: string
+          requirements: string[] | null
+          sort_order: number | null
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          department: string
+          description: string
+          id?: string
+          is_active?: boolean | null
+          location: string
+          requirements?: string[] | null
+          sort_order?: number | null
+          title: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          department?: string
+          description?: string
+          id?: string
+          is_active?: boolean | null
+          location?: string
+          requirements?: string[] | null
+          sort_order?: number | null
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       case_studies: {
         Row: {
           client: string

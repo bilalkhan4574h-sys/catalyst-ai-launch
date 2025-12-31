@@ -16,7 +16,8 @@ import {
   List,
   Quote,
   Menu,
-  Image
+  Image,
+  UserCircle
 } from 'lucide-react';
 import { AdminDashboard } from '@/components/admin/AdminDashboard';
 import { AdminServices } from '@/components/admin/AdminServices';
@@ -28,8 +29,10 @@ import { AdminBlog } from '@/components/admin/AdminBlog';
 import { AdminContact } from '@/components/admin/AdminContact';
 import { AdminSettings } from '@/components/admin/AdminSettings';
 import { AdminMedia } from '@/components/admin/AdminMedia';
+import { AdminCareers } from '@/components/admin/AdminCareers';
+import { AdminTeam } from '@/components/admin/AdminTeam';
 
-type Section = 'dashboard' | 'services' | 'case-studies' | 'testimonials' | 'process' | 'tech' | 'blog' | 'contact' | 'media' | 'settings';
+type Section = 'dashboard' | 'services' | 'case-studies' | 'testimonials' | 'process' | 'tech' | 'blog' | 'contact' | 'media' | 'settings' | 'careers' | 'team';
 
 export default function Admin() {
   const { user, isAdmin, loading, signOut } = useAuth();
@@ -97,6 +100,8 @@ export default function Admin() {
     { id: 'process', label: 'Process', icon: List },
     { id: 'tech', label: 'Tech Stack', icon: Cpu },
     { id: 'blog', label: 'Blog Posts', icon: FileText },
+    { id: 'team', label: 'Team Members', icon: UserCircle },
+    { id: 'careers', label: 'Careers', icon: Briefcase },
     { id: 'contact', label: 'Contact Submissions', icon: MessageSquare },
     { id: 'settings', label: 'Site Settings', icon: Settings },
   ] as const;
@@ -124,6 +129,10 @@ export default function Admin() {
         return <AdminTechStack />;
       case 'blog':
         return <AdminBlog />;
+      case 'team':
+        return <AdminTeam />;
+      case 'careers':
+        return <AdminCareers />;
       case 'contact':
         return <AdminContact />;
       case 'settings':
