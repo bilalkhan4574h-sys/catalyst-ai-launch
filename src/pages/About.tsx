@@ -121,9 +121,9 @@ export default function About() {
               ))}
             </div>
           ) : teamMembers && teamMembers.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+            <div className="flex flex-wrap justify-center gap-8">
               {teamMembers.map((member) => (
-                <div key={member.id} className="bg-card border border-border rounded-xl overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                <div key={member.id} className="bg-card border border-border rounded-xl overflow-hidden group hover:shadow-lg transition-shadow duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(25%-1.5rem)] max-w-[280px]">
                   <div className="w-full aspect-[3/4] bg-gradient-to-br from-accent to-primary flex items-center justify-center overflow-hidden">
                     {member.photo_url ? (
                       <img 
