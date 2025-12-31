@@ -34,7 +34,7 @@ export const Footer = () => {
             <Link to="/" className="flex items-center gap-0.5 font-display text-xl sm:text-2xl font-bold">
               <span>Catalyst</span>
               <span className="text-accent">AI</span>
-              <img src={catalystIcon} alt="" className="h-6 sm:h-8 w-auto ml-1 brightness-0 invert" />
+              <img src={catalystIcon} alt="" className="h-16 sm:h-8 w-auto ml-1 brightness-0 invert" />
             </Link>
             <p className="text-primary-foreground/70 mt-3 sm:mt-4 max-w-sm text-sm sm:text-base">
               Building intelligent growth engines for modern businesses. AI-powered systems that scale.
