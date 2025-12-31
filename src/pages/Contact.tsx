@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { Contact as ContactSection } from '@/components/sections/Contact';
-import { setPageSeo } from '@/lib/seo';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { useEffect } from "react";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Contact as ContactSection } from "@/components/sections/Contact";
+import { setPageSeo } from "@/lib/seo";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function Contact() {
   useEffect(() => {
     setPageSeo({
-      title: 'Contact Us | Catalyst AI',
-      description: 'Get in touch with Catalyst AI. We\'d love to hear from you and discuss how we can help grow your business.',
+      title: "Contact Us | Catalyst AI",
+      description:
+        "Get in touch with Catalyst AI. We'd love to hear from you and discuss how we can help grow your business.",
       canonical: `${window.location.origin}/contact`,
     });
   }, []);
@@ -17,7 +18,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-narrow text-center">
@@ -25,8 +26,8 @@ export default function Contact() {
             Get in <span className="text-accent">Touch</span>
           </h1>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto">
-            Have a question or want to learn more about how Catalyst AI can help your business? 
-            We'd love to hear from you.
+            Have a question or want to learn more about how Catalyst AI can help your business? We'd love to hear from
+            you.
           </p>
         </div>
       </section>
@@ -54,7 +55,7 @@ export default function Contact() {
                 <MapPin className="w-6 h-6 text-accent" />
               </div>
               <h3 className="font-display font-semibold mb-2">Visit Us</h3>
-              <p className="text-muted-foreground text-sm">San Francisco, CA</p>
+              <p className="text-muted-foreground text-sm">Islamabad, Pakistan</p>
             </div>
           </div>
         </div>
