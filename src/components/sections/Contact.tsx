@@ -13,7 +13,7 @@ export const Contact = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,16 +23,14 @@ export const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Save to database
-    const { error } = await supabase
-      .from('contact_submissions')
-      .insert({
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      });
-    
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    });
+
     if (error) {
       setIsSubmitting(false);
       toast({
@@ -45,7 +43,7 @@ export const Contact = () => {
 
     // Send email notifications
     try {
-      await supabase.functions.invoke('send-contact-email', {
+      await supabase.functions.invoke("send-contact-email", {
         body: {
           name: formData.name,
           email: formData.email,
@@ -53,10 +51,10 @@ export const Contact = () => {
         },
       });
     } catch (emailError) {
-      console.error('Email notification failed:', emailError);
+      console.error("Email notification failed:", emailError);
       // Don't block form submission if email fails
     }
-    
+
     setIsSubmitting(false);
     toast({
       title: "Message sent!",
@@ -75,11 +73,10 @@ export const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-accent font-medium text-sm uppercase tracking-wider">Get Started</span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">
-              Let's Build Your AI Growth Engine
-            </h2>
+            <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">Let's Build Your AI Growth Engine</h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Ready to transform your business with AI? Book a strategy call and discover how we can accelerate your growth.
+              Ready to transform your business with AI? Book a strategy call and discover how we can accelerate your
+              growth.
             </p>
 
             <div className="space-y-4">
@@ -98,7 +95,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <div className="font-medium">Location</div>
-                  <div className="text-muted-foreground">San Francisco, CA</div>
+                  <div className="text-muted-foreground">Islamabad,Pakistan</div>
                 </div>
               </div>
             </div>
@@ -111,7 +108,9 @@ export const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Name
+                </label>
                 <Input
                   id="name"
                   placeholder="Your name"
@@ -122,7 +121,9 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email
+                </label>
                 <Input
                   id="email"
                   type="email"
@@ -134,7 +135,9 @@ export const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Project Details</label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  Project Details
+                </label>
                 <Textarea
                   id="message"
                   placeholder="Tell us about your project and goals..."
