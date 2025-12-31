@@ -109,29 +109,39 @@ export default function About() {
         <div className="container-narrow">
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-12 text-center">Our Team</h2>
           {isLoading ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-card border border-border rounded-xl p-6">
-                  <Skeleton className="w-24 h-24 rounded-full mx-auto mb-4" />
-                  <Skeleton className="h-6 w-32 mx-auto mb-2" />
-                  <Skeleton className="h-4 w-24 mx-auto" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="bg-card border border-border rounded-xl overflow-hidden">
+                  <Skeleton className="w-full aspect-[3/4]" />
+                  <div className="p-4">
+                    <Skeleton className="h-6 w-32 mx-auto mb-2" />
+                    <Skeleton className="h-4 w-24 mx-auto" />
+                  </div>
                 </div>
               ))}
             </div>
           ) : teamMembers && teamMembers.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {teamMembers.map((member) => (
-                <div key={member.id} className="bg-card border border-border rounded-xl p-6 text-center">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-primary mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-primary-foreground">
+                <div key={member.id} className="bg-card border border-border rounded-xl overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                  <div className="w-full aspect-[3/4] bg-gradient-to-br from-accent to-primary flex items-center justify-center overflow-hidden">
                     {member.photo_url ? (
-                      <img src={member.photo_url} alt={member.name} className="w-full h-full rounded-full object-cover" />
+                      <img 
+                        src={member.photo_url} 
+                        alt={member.name} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                      />
                     ) : (
-                      member.name.charAt(0)
+                      <span className="text-6xl font-bold text-primary-foreground">
+                        {member.name.charAt(0)}
+                      </span>
                     )}
                   </div>
-                  <h3 className="font-display text-xl font-semibold">{member.name}</h3>
-                  <p className="text-accent text-sm mb-3">{member.role}</p>
-                  {member.bio && <p className="text-muted-foreground text-sm">{member.bio}</p>}
+                  <div className="p-5 text-center">
+                    <h3 className="font-display text-xl font-semibold">{member.name}</h3>
+                    <p className="text-accent text-sm mb-2">{member.role}</p>
+                    {member.bio && <p className="text-muted-foreground text-sm line-clamp-3">{member.bio}</p>}
+                  </div>
                 </div>
               ))}
             </div>
