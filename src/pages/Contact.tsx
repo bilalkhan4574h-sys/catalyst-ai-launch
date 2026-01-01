@@ -41,7 +41,7 @@ export default function Contact() {
                 <Mail className="w-6 h-6 text-accent" />
               </div>
               <h3 className="font-display font-semibold mb-2">Email Us</h3>
-              <p className="text-muted-foreground text-sm">hello@catalystai.com</p>
+              <p className="text-muted-foreground text-sm">coming soon</p>
             </div>
             <div className="bg-card border border-border rounded-xl p-6 text-center">
               <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
