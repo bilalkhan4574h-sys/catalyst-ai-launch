@@ -48,7 +48,7 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-accent" />
               </div>
               <h3 className="font-display font-semibold mb-2">Call Us</h3>
-              <p className="text-muted-foreground text-sm">+1 (555) 123-4567</p>
+              <p className="text-muted-foreground text-sm">+92 3415100757</p>
             </div>
             <div className="bg-card border border-border rounded-xl p-6 text-center">
               <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
