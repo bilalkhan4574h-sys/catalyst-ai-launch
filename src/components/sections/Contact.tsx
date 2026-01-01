@@ -86,7 +86,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <div className="font-medium">Email Us</div>
-                  <div className="text-muted-foreground">hello@catalyst-ai.com</div>
+                  <div className="text-muted-foreground">coming soon</div>
                 </div>
               </div>
               <div className="flex items-center gap-4">
