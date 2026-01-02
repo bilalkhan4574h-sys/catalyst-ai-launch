@@ -51,10 +51,10 @@ export const TechStack = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-accent font-medium text-sm uppercase tracking-wider">Technology</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 sm:mb-6">
             Our Tech Stack
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
             Best-in-class tools and frameworks that power our AI growth systems.
           </p>
         </motion.div>

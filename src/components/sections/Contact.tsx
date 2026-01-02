@@ -66,17 +66,16 @@ export const Contact = () => {
   return (
     <section id="contact" className="section-padding bg-card" ref={ref}>
       <div className="container-narrow">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             <span className="text-accent font-medium text-sm uppercase tracking-wider">Get Started</span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">Let's Build Your AI Growth Engine</h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Ready to transform your business with AI? Book a strategy call and discover how we can accelerate your
-              growth.
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 sm:mb-6">Let's Build Your AI Growth Engine</h2>
+            <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8">
+              Ready to transform your business with AI? Book a strategy call and discover how we can accelerate your growth.
             </p>
 
             <div className="space-y-4">

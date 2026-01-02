@@ -54,10 +54,10 @@ export const CaseStudies = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-accent font-medium text-sm uppercase tracking-wider">Case Studies</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 sm:mb-6">
             Measurable Results
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
             Real outcomes from real clients. See how AI-powered growth translates to business impact.
           </p>
         </motion.div>

@@ -44,10 +44,10 @@ export const Process = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-accent font-medium text-sm uppercase tracking-wider">Our Process</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 sm:mb-6">
             90-Day AI Growth Framework
           </h2>
-          <p className="text-primary-foreground/70 max-w-2xl mx-auto text-lg">
+          <p className="text-primary-foreground/70 max-w-2xl mx-auto text-base sm:text-lg">
             A proven methodology that transforms your growth engine in just 90 days.
           </p>
         </motion.div>

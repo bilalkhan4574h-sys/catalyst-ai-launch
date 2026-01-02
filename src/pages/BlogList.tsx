@@ -51,7 +51,7 @@ export default function BlogList() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-narrow text-center">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Our <span className="text-accent">Blog</span>
           </h1>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto">
