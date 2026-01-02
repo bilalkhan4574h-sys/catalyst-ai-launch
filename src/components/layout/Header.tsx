@@ -17,6 +17,15 @@ const navLinks = [
   { label: "Contact", href: "/contact", icon: Mail },
 ];
 
+// Simplified mobile nav - key items only
+const mobileNavLinks = [
+  { label: "Home", href: "/", icon: Home },
+  { label: "Services", href: "/#services", icon: Briefcase },
+  { label: "About", href: "/about", icon: Users },
+  { label: "Blog", href: "/blog", icon: BookOpen },
+  { label: "Contact", href: "/contact", icon: Mail },
+];
+
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -84,38 +93,23 @@ export const Header = () => {
             />
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button className="p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.nav
-            className="md:hidden py-4 sm:py-6 border-t border-border bg-background/95 backdrop-blur-xl"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex flex-col gap-3 sm:gap-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-1 bg-transparent border-none cursor-pointer text-left"
-                >
-                  {link.label}
-                </button>
-              ))}
-              <Button variant="glow" size="default" className="mt-3 sm:mt-4 w-full" onClick={() => handleNavClick("/contact")}>
-                Get Started
-              </Button>
-            </div>
-          </motion.nav>
-        )}
+      {/* Mobile Bottom Dock */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-center pb-4 px-4 pointer-events-none">
+        <div className="pointer-events-auto">
+          <Dock
+            items={mobileNavLinks.map((link) => ({
+              icon: <link.icon size={20} />,
+              label: link.label,
+              onClick: () => handleNavClick(link.href),
+            }))}
+            panelHeight={60}
+            baseItemSize={44}
+            magnification={56}
+          />
+        </div>
       </div>
     </motion.header>
   );
