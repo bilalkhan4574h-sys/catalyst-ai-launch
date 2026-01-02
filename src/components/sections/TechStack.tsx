@@ -1,51 +1,57 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { 
+  SiPython, 
+  SiTensorflow, 
+  SiPytorch, 
+  SiOpenai, 
+  SiLangchain,
+  SiSalesforce, 
+  SiHubspot, 
+  SiZapier, 
+  SiPostgresql, 
+  SiSnowflake,
+  SiSlack,
+  SiGooglecloud,
+  SiStripe,
+  SiShopify,
+  SiAmazon
+} from "react-icons/si";
+import { FaMicrosoft } from "react-icons/fa";
+import LogoLoop from "@/components/LogoLoop";
 
-const fallbackTechnologies = [
-  { name: "Python", category: "Core" },
-  { name: "TensorFlow", category: "ML" },
-  { name: "PyTorch", category: "ML" },
-  { name: "OpenAI API", category: "AI" },
-  { name: "LangChain", category: "AI" },
-  { name: "n8n", category: "Automation" },
-  { name: "Salesforce", category: "CRM" },
-  { name: "HubSpot", category: "CRM" },
-  { name: "Zapier", category: "Automation" },
-  { name: "Make", category: "Automation" },
-  { name: "PostgreSQL", category: "Data" },
-  { name: "Snowflake", category: "Data" },
-  { name: "dbt", category: "Data" },
+const techLogos = [
+  { node: <SiPython />, title: "Python" },
+  { node: <SiTensorflow />, title: "TensorFlow" },
+  { node: <SiPytorch />, title: "PyTorch" },
+  { node: <SiOpenai />, title: "OpenAI" },
+  { node: <SiLangchain />, title: "LangChain" },
+  { node: <SiSalesforce />, title: "Salesforce" },
+  { node: <SiHubspot />, title: "HubSpot" },
+  { node: <SiZapier />, title: "Zapier" },
+  { node: <SiPostgresql />, title: "PostgreSQL" },
+  { node: <SiSnowflake />, title: "Snowflake" },
+];
+
+const integrationLogos = [
+  { node: <SiSlack />, title: "Slack" },
+  { node: <SiGooglecloud />, title: "Google Cloud" },
+  { node: <FaMicrosoft />, title: "Microsoft 365" },
+  { node: <SiStripe />, title: "Stripe" },
+  { node: <SiShopify />, title: "Shopify" },
+  { node: <SiAmazon />, title: "AWS" },
 ];
 
 export const TechStack = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const { data: techStack } = useQuery({
-    queryKey: ['tech-stack'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('tech_stack')
-        .select('*')
-        .eq('is_active', true)
-        .order('sort_order');
-      if (error) throw error;
-      return data;
-    },
-  });
-
-  const technologies = techStack && techStack.length > 0 
-    ? techStack.map(t => ({ name: t.name, category: t.category }))
-    : fallbackTechnologies;
-
   return (
     <section id="tech" className="section-padding bg-card" ref={ref}>
       <div className="container-narrow">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -59,25 +65,25 @@ export const TechStack = () => {
           </p>
         </motion.div>
 
+        {/* Tech Stack Logo Loop */}
         <motion.div
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4"
+          className="h-20 sm:h-24 mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={index}
-              className="group px-4 sm:px-5 md:px-6 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-background border border-border hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 cursor-default"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 + index * 0.03 }}
-              whileHover={{ y: -4 }}
-            >
-              <div className="font-medium text-foreground text-sm sm:text-base">{tech.name}</div>
-              <div className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1">{tech.category}</div>
-            </motion.div>
-          ))}
+          <LogoLoop
+            logos={techLogos}
+            speed={80}
+            direction="left"
+            logoHeight={40}
+            gap={60}
+            hoverSpeed={20}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="hsl(var(--card))"
+            ariaLabel="Technology stack logos"
+          />
         </motion.div>
 
         {/* Integration Partners */}
@@ -87,11 +93,20 @@ export const TechStack = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-muted-foreground mb-5 sm:mb-6 md:mb-8 text-sm sm:text-base">We integrate with your existing tools</p>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 opacity-60">
-            {["Slack", "Google Workspace", "Microsoft 365", "Stripe", "Shopify", "AWS"].map((partner, index) => (
-              <span key={index} className="font-display font-semibold text-sm sm:text-base md:text-lg text-foreground/50">{partner}</span>
-            ))}
+          <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base">We integrate with your existing tools</p>
+          <div className="h-16 sm:h-20">
+            <LogoLoop
+              logos={integrationLogos}
+              speed={60}
+              direction="right"
+              logoHeight={32}
+              gap={50}
+              hoverSpeed={15}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="hsl(var(--card))"
+              ariaLabel="Integration partner logos"
+            />
           </div>
         </motion.div>
       </div>
