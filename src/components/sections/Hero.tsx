@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Magnet from "@/components/Magnet";
 
 export const Hero = () => {
   return (
@@ -55,12 +56,14 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          <Button variant="glow" size="lg" className="w-full sm:w-auto text-sm sm:text-base" asChild>
-            <a href="#contact">
-              Book a Strategy Call
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </a>
-          </Button>
+          <Magnet padding={80} magnetStrength={3}>
+            <Button variant="glow" size="lg" className="w-full sm:w-auto text-sm sm:text-base" asChild>
+              <a href="#contact">
+                Book a Strategy Call
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
+            </Button>
+          </Magnet>
           <Button variant="outline" size="lg" className="w-full sm:w-auto text-sm sm:text-base" asChild>
             <a href="#services">Explore Services</a>
           </Button>
