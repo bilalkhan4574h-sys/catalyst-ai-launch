@@ -2,18 +2,19 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Briefcase, TrendingUp, Workflow, Cpu, BookOpen, Users, Building2, Mail } from "lucide-react";
 import catalystIcon from "@/assets/catalyst-icon.png";
+import Dock from "@/components/Dock";
 
 const navLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "Results", href: "/#results" },
-  { label: "Process", href: "/#process" },
-  { label: "Tech", href: "/#tech" },
-  { label: "Insights", href: "/blog" },
-  { label: "About", href: "/about" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
+  { label: "Services", href: "/#services", icon: Briefcase },
+  { label: "Results", href: "/#results", icon: TrendingUp },
+  { label: "Process", href: "/#process", icon: Workflow },
+  { label: "Tech", href: "/#tech", icon: Cpu },
+  { label: "Insights", href: "/blog", icon: BookOpen },
+  { label: "About", href: "/about", icon: Users },
+  { label: "Careers", href: "/careers", icon: Building2 },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 export const Header = () => {
@@ -69,25 +70,19 @@ export const Header = () => {
             <img src={catalystIcon} alt="" className="h-10 sm:h-12 w-auto -ml-2" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
-              >
-                {link.label}
-              </button>
-            ))}
+          {/* Desktop Navigation - Dock */}
+          <nav className="hidden md:flex items-center">
+            <Dock
+              items={navLinks.map((link) => ({
+                icon: <link.icon size={20} />,
+                label: link.label,
+                onClick: () => handleNavClick(link.href),
+              }))}
+              panelHeight={56}
+              baseItemSize={42}
+              magnification={58}
+            />
           </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center">
-            <Button variant="glow" size="default" onClick={() => handleNavClick("/contact")}>
-              Get Started
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
