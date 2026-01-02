@@ -46,7 +46,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-narrow text-center">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             About <span className="text-accent">Catalyst AI</span>
           </h1>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto">
@@ -123,7 +123,7 @@ export default function About() {
           ) : teamMembers && teamMembers.length > 0 ? (
             <div className="flex flex-wrap justify-center gap-8">
               {teamMembers.map((member) => (
-                <div key={member.id} className="bg-card border border-border rounded-xl overflow-hidden group hover:shadow-lg transition-shadow duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(25%-1.5rem)] max-w-[280px]">
+                <div key={member.id} className="bg-card border border-border rounded-xl overflow-hidden group hover:shadow-lg transition-shadow duration-300 w-full max-w-[280px] sm:max-w-none sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(25%-1.5rem)]">
                   <div className="w-full aspect-[3/4] bg-gradient-to-br from-accent to-primary flex items-center justify-center overflow-hidden">
                     {member.photo_url ? (
                       <img 
