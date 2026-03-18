@@ -21,7 +21,7 @@ const defaultSettings = {
     ctaText: "Book a Strategy Call",
   },
   contact: {
-    email: "hello@catalyst-ai.com",
+    email: "hello@growviaaiagency.com",
     location: "San Francisco, CA",
   },
   social: {

@@ -45,7 +45,7 @@ export default function BlogPostPage() {
   useEffect(() => {
     if (post) {
       setPageSeo({
-        title: `${post.title} | Catalyst AI Blog`,
+        title: `${post.title} | GrowVia Ai Agency Blog`,
         description: post.excerpt,
         canonical: `${window.location.origin}/blog/${post.slug}`,
       });

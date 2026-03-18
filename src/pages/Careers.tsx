@@ -21,8 +21,8 @@ interface Career {
 export default function Careers() {
   useEffect(() => {
     setPageSeo({
-      title: 'Careers | Catalyst AI',
-      description: 'Join the Catalyst AI team. Explore open positions and help us build the future of AI-powered business growth.',
+      title: 'Careers | GrowVia Ai Agency',
+      description: 'Join the GrowVia Ai Agency team. Explore open positions and help us build the future of AI-powered business growth.',
       canonical: `${window.location.origin}/careers`,
     });
   }, []);
@@ -60,7 +60,7 @@ export default function Careers() {
       {/* Why Join Us Section */}
       <section className="py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-muted/30">
         <div className="container-narrow">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-12 text-center">Why Join Catalyst AI?</h2>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-12 text-center">Why Join GrowVia Ai Agency?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: 'Remote First', description: 'Work from anywhere in the world with flexible hours.' },
@@ -135,7 +135,7 @@ export default function Careers() {
           ) : (
             <div className="text-center py-12 bg-card border border-border rounded-xl">
               <p className="text-muted-foreground mb-4">No open positions at the moment.</p>
-              <p className="text-sm text-muted-foreground">Check back soon or send us your resume at careers@catalystai.com</p>
+              <p className="text-sm text-muted-foreground">Check back soon or send us your resume at careers@growviaaiagency.com</p>
             </div>
           )}
         </div>

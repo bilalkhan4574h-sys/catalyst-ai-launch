@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+
 
 export const Contact = () => {
   const ref = useRef(null);
@@ -24,35 +24,34 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Save to database
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-    });
-
-    if (error) {
-      setIsSubmitting(false);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Send email notifications
     try {
-      await supabase.functions.invoke("send-contact-email", {
-        body: {
+      const webhookUrl = import.meta.env.VITE_GOOGLE_WEBHOOK_URL;
+      
+      if (!webhookUrl) {
+        throw new Error("Webhook URL is not configured. Please contact the administrator.");
+      }
+
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           message: formData.message,
-        },
+        }),
       });
-    } catch (emailError) {
-      console.error("Email notification failed:", emailError);
-      // Don't block form submission if email fails
+
+      if (!response.ok) {
+        throw new Error("Failed to send message to Google Sheets.");
+      }
+    } catch (error) {
+      console.error("Submission failed:", error);
+      setIsSubmitting(false);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+      return;
     }
 
     setIsSubmitting(false);

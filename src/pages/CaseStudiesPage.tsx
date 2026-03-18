@@ -20,8 +20,8 @@ interface CaseStudy {
 export default function CaseStudiesPage() {
   useEffect(() => {
     setPageSeo({
-      title: 'Case Studies | Catalyst AI',
-      description: 'See how Catalyst AI has helped businesses achieve remarkable growth with AI-powered solutions.',
+      title: 'Case Studies | GrowVia Ai Agency',
+      description: 'See how GrowVia Ai Agency has helped businesses achieve remarkable growth with AI-powered solutions.',
       canonical: `${window.location.origin}/case-studies`,
     });
   }, []);
@@ -113,7 +113,7 @@ export default function CaseStudiesPage() {
             Ready to Write Your Success Story?
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Let's discuss how Catalyst AI can help your business achieve similar results.
+            Let's discuss how GrowVia Ai Agency can help your business achieve similar results.
           </p>
           <a
             href="/contact"

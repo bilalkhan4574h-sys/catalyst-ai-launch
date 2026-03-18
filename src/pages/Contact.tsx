@@ -8,9 +8,9 @@ import { Mail, MapPin, Phone } from "lucide-react";
 export default function Contact() {
   useEffect(() => {
     setPageSeo({
-      title: "Contact Us | Catalyst AI",
+      title: "Contact Us | GrowVia Ai Agency",
       description:
-        "Get in touch with Catalyst AI. We'd love to hear from you and discuss how we can help grow your business.",
+        "Get in touch with GrowVia Ai Agency. We'd love to hear from you and discuss how we can help grow your business.",
       canonical: `${window.location.origin}/contact`,
     });
   }, []);
@@ -26,7 +26,7 @@ export default function Contact() {
             Get in <span className="text-accent">Touch</span>
           </h1>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto">
-            Have a question or want to learn more about how Catalyst AI can help your business? We'd love to hear from
+            Have a question or want to learn more about how GrowVia Ai Agency can help your business? We'd love to hear from
             you.
           </p>
         </div>

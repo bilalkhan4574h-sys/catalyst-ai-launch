@@ -1,6 +1,6 @@
 import { ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import catalystIcon from "@/assets/catalyst-icon.png";
+import growviaIcon from "@/assets/growvia-icon.png";
 
 const footerLinks = {
   Company: [
@@ -32,9 +32,9 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
             <Link to="/" className="flex items-center font-display text-xl sm:text-2xl font-bold">
-              <span>Catalyst</span>
-              <span className="text-accent">AI</span>
-              <img src={catalystIcon} alt="" className="h-10 sm:h-12 w-auto -ml-2 brightness-0 invert" />
+              <span>GrowVia</span>
+              <span className="text-accent"> AI Agency</span>
+              <img src={growviaIcon} alt="" className="h-10 sm:h-12 w-auto -ml-2 brightness-0 invert" />
             </Link>
             <p className="text-primary-foreground/70 mt-3 sm:mt-4 max-w-sm text-sm sm:text-base">
               Building intelligent growth engines for modern businesses. AI-powered systems that scale.
@@ -64,7 +64,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-6 sm:pt-8 border-t border-primary-foreground/10 gap-4">
           <p className="text-primary-foreground/50 text-xs sm:text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} Catalyst AI. All rights reserved.
+            © {new Date().getFullYear()} GrowVia Ai Agency. All rights reserved.
           </p>
           <button
             onClick={scrollToTop}

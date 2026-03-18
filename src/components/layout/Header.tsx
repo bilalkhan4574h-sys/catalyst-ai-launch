@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, Briefcase, TrendingUp, Workflow, Cpu, BookOpen, Users, Building2, Mail } from "lucide-react";
-import catalystIcon from "@/assets/catalyst-icon.png";
+import growviaIcon from "@/assets/growvia-icon.png";
 import Dock from "@/components/Dock";
 
 const navLinks = [
@@ -74,9 +74,9 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center font-display text-xl sm:text-2xl font-bold tracking-tight">
-            <span className="text-foreground">Catalyst</span>
-            <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent">AI</span>
-            <img src={catalystIcon} alt="" className="h-10 sm:h-12 w-auto -ml-2" />
+            <span className="text-foreground">GrowVia</span>
+            <span className="bg-gradient-to-r from-accent to-[hsl(187,92%,43%)] bg-clip-text text-transparent"> AI Agency</span>
+            <img src={growviaIcon} alt="" className="h-10 sm:h-12 w-auto -ml-2" />
           </Link>
 
           {/* Desktop Navigation - Dock */}

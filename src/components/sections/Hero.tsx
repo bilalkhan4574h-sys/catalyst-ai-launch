@@ -34,7 +34,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
         >
-          <span className="text-foreground">Catalyst AI</span>
+          <span className="text-foreground">GrowVia Ai Agency</span>
           <br />
           <span className="text-gradient">Intelligent Growth Engines</span>
           <br />

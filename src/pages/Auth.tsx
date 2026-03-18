@@ -31,10 +31,10 @@ export default function Auth() {
 
   useEffect(() => {
     setPageSeo({
-      title: isLogin ? 'Admin Login | Catalyst AI' : 'Create Account | Catalyst AI',
+      title: isLogin ? 'Admin Login | GrowVia Ai Agency' : 'Create Account | GrowVia Ai Agency',
       description: isLogin
-        ? 'Admin login to access the Catalyst AI admin panel.'
-        : 'Create an account to access the Catalyst AI admin panel.',
+        ? 'Admin login to access the GrowVia Ai Agency admin panel.'
+        : 'Create an account to access the GrowVia Ai Agency admin panel.',
       canonical: `${window.location.origin}/auth`,
       robots: 'noindex,nofollow',
     });

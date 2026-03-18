@@ -25,8 +25,8 @@ interface BlogPost {
 export default function BlogList() {
   useEffect(() => {
     setPageSeo({
-      title: 'Blog | Catalyst AI',
-      description: 'Insights, tutorials, and updates from the Catalyst AI team on AI-powered growth strategies.',
+      title: 'Blog | GrowVia Ai Agency',
+      description: 'Insights, tutorials, and updates from the GrowVia Ai Agency team on AI-powered growth strategies.',
       canonical: `${window.location.origin}/blog`,
     });
   }, []);

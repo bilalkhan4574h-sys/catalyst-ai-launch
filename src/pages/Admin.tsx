@@ -47,8 +47,8 @@ export default function Admin() {
 
   useEffect(() => {
     setPageSeo({
-      title: 'Admin Dashboard | Catalyst AI',
-      description: 'Catalyst AI admin dashboard to manage site content and settings.',
+      title: 'Admin Dashboard | GrowVia Ai Agency',
+      description: 'GrowVia Ai Agency admin dashboard to manage site content and settings.',
       canonical: `${window.location.origin}/admin`,
       robots: 'noindex,nofollow',
     });
@@ -146,7 +146,7 @@ export default function Admin() {
     <>
       <div className="p-6 border-b border-border">
         <Link to="/" className="font-display text-xl font-bold text-accent">
-          Catalyst AI
+          GrowVia Ai Agency
         </Link>
         <p className="text-xs text-muted-foreground mt-1">Admin Panel</p>
       </div>
@@ -190,7 +190,7 @@ export default function Admin() {
       {/* Mobile Header */}
       <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-card">
         <Link to="/" className="font-display text-lg font-bold text-accent">
-          Catalyst AI
+          GrowVia Ai Agency
         </Link>
         <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
           <SheetTrigger asChild>

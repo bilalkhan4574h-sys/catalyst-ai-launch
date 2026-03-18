@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification email to admin
     const adminEmailResponse = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
-      to: ["hello@catalyst-ai.com"], // Replace with your actual admin email
+      to: ["hello@growviaaiagency.com"], // Replace with your actual admin email
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h1>New Contact Form Submission</h1>
@@ -38,7 +38,7 @@ const handler = async (req: Request): Promise<Response> => {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
         <hr>
-        <p><em>Submitted via Catalyst AI contact form</em></p>
+        <p><em>Submitted via GrowVia Ai Agency contact form</em></p>
       `,
     });
 
@@ -46,7 +46,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to user
     const userEmailResponse = await resend.emails.send({
-      from: "Catalyst AI <onboarding@resend.dev>",
+      from: "GrowVia Ai Agency <onboarding@resend.dev>",
       to: [email],
       subject: "We received your message!",
       html: `
@@ -56,7 +56,7 @@ const handler = async (req: Request): Promise<Response> => {
         <blockquote style="background: #f4f4f4; padding: 16px; border-radius: 8px;">
           ${message.replace(/\n/g, '<br>')}
         </blockquote>
-        <p>Best regards,<br>The Catalyst AI Team</p>
+        <p>Best regards,<br>The GrowVia Ai Agency Team</p>
       `,
     });
 

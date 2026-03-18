@@ -29,7 +29,7 @@ const caseStudies = [
 
 const testimonials = [
   {
-    quote: "Catalyst AI transformed our entire go-to-market strategy. The results speak for themselves.",
+    quote: "GrowVia Ai Agency transformed our entire go-to-market strategy. The results speak for themselves.",
     author: "Sarah Chen",
     role: "VP of Growth, TechScale Inc.",
   },

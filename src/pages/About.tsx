@@ -20,8 +20,8 @@ interface TeamMember {
 export default function About() {
   useEffect(() => {
     setPageSeo({
-      title: 'About Us | Catalyst AI',
-      description: 'Learn about Catalyst AI - Building intelligent growth engines for modern businesses with AI-powered systems that scale.',
+      title: 'About Us | GrowVia Ai Agency',
+      description: 'Learn about GrowVia Ai Agency - Building intelligent growth engines for modern businesses with AI-powered systems that scale.',
       canonical: `${window.location.origin}/about`,
     });
   }, []);
@@ -47,7 +47,7 @@ export default function About() {
       <section className="pt-32 pb-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-narrow text-center">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-            About <span className="text-accent">Catalyst AI</span>
+            About <span className="text-accent">GrowVia Ai Agency</span>
           </h1>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto">
             We're on a mission to democratize AI-powered growth for businesses of all sizes. 
@@ -63,7 +63,7 @@ export default function About() {
             <div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">Our Mission</h2>
               <p className="text-muted-foreground mb-4">
-                At Catalyst AI, we believe that every business deserves access to cutting-edge AI technology 
+                At GrowVia Ai Agency, we believe that every business deserves access to cutting-edge AI technology 
                 that can transform their growth trajectory. We build intelligent systems that learn, adapt, 
                 and scale with your business.
               </p>
